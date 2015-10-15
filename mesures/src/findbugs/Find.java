@@ -1,5 +1,8 @@
 package findbugs;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 public class Find {
 
 	/**
@@ -41,6 +44,37 @@ public class Find {
 	public static void main(String[] args) {
 		testES1();
 		testES2();
-	}
+		
+		/*
+		 * Création d'un bug 
+		 */
+		String s = new String((String)null);
+		
+		
+		/*
+		 * Création d'un bug: valeur de retour ignorée
+		 */
+		String aString = "bob";
+		aString.replace('b', 'p');
+		if(aString.equals("pop")){}
+		
+		}
 
+	/*
+	 *Création d'un bug : la méthode peut retourner null
+	 */
+	@Override
+	public String toString() {
+		return null;
+	}
+	
+	/*
+	 * Création d'un bug: création de la méthode equals, mais pas
+	 * de laméthode hashcode 
+	 * 
+	 * de plus, la méthode retourne toujours true
+	 */
+	public boolean equals(Object o) {
+		return true;
+	}
 }
